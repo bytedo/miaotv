@@ -1,0 +1,5 @@
+# Test-only loopback Redis/Lua emulator; no live database connection is used.
+fakeredis[lua]==2.38.0
+lupa==2.8
+redis==8.1.0
+sortedcontainers==2.4.0

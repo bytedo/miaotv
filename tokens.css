@@ -1,0 +1,117 @@
+/* MiaoTV admin design tokens. Namespaced to preserve the public site theme. */
+:root {
+  --color-admin-canvas: oklch(97.4% 0.004 255);
+  --color-admin-surface: oklch(100% 0 0);
+  --color-admin-subtle: oklch(98.3% 0.003 255);
+  --color-admin-hover: oklch(96.2% 0.006 255);
+  --color-admin-ink: oklch(26% 0.018 260);
+  --color-admin-muted: oklch(48% 0.017 258);
+  --color-admin-faint: oklch(54% 0.016 258);
+  --color-admin-line: oklch(90.8% 0.008 255);
+  --color-admin-input-line: oklch(83% 0.014 255);
+  --color-admin-primary: oklch(51.5% 0.194 262);
+  --color-admin-primary-hover: oklch(45.6% 0.186 263);
+  --color-admin-primary-soft: oklch(95.7% 0.024 262);
+  --color-admin-on-primary: oklch(100% 0 0);
+  --color-admin-success: oklch(45% 0.1 159);
+  --color-admin-success-soft: oklch(96% 0.022 159);
+  --color-admin-warning: oklch(47% 0.12 65);
+  --color-admin-warning-soft: oklch(97% 0.028 80);
+  --color-admin-danger: oklch(50% 0.17 26);
+  --color-admin-danger-soft: oklch(97% 0.014 26);
+  --color-admin-scrim: oklch(17% 0.02 260 / 45%);
+  --color-admin-shadow: oklch(20% 0.02 260 / 10%);
+  --font-admin-ui: 'Inter', 'Segoe UI', 'Microsoft YaHei', sans-serif;
+  --font-admin-code: 'Cascadia Code', 'SFMono-Regular', Consolas, monospace;
+  --space-admin-xs: 4px;
+  --space-admin-sm: 8px;
+  --space-admin-md: 12px;
+  --space-admin-lg: 16px;
+  --space-admin-xl: 24px;
+  --space-admin-2xl: 32px;
+  --space-admin-3xl: 40px;
+  --text-admin-xs: 12px;
+  --text-admin-sm: 13px;
+  --text-admin-base: 14px;
+  --text-admin-lg: 16px;
+  --text-admin-title: 26px;
+  --text-admin-stat: 32px;
+  --radius-admin-sm: 6px;
+  --radius-admin-md: 8px;
+  --radius-admin-lg: 12px;
+  --rule-admin: 1px;
+  --ease-admin-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-admin-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-admin-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-admin-fast: 120ms;
+}
+.dark {
+  --color-admin-canvas: oklch(18.5% 0.012 260);
+  --color-admin-surface: oklch(22.5% 0.014 260);
+  --color-admin-subtle: oklch(24.5% 0.014 260);
+  --color-admin-hover: oklch(28% 0.018 260);
+  --color-admin-ink: oklch(94% 0.005 255);
+  --color-admin-muted: oklch(75% 0.016 255);
+  --color-admin-faint: oklch(67% 0.019 255);
+  --color-admin-line: oklch(32% 0.018 255);
+  --color-admin-input-line: oklch(43% 0.022 255);
+  --color-admin-primary: oklch(72% 0.139 258);
+  --color-admin-primary-hover: oklch(79% 0.106 258);
+  --color-admin-primary-soft: oklch(29% 0.047 260);
+  --color-admin-on-primary: oklch(16% 0.025 260);
+  --color-admin-success: oklch(76% 0.11 159);
+  --color-admin-success-soft: oklch(28% 0.035 159);
+  --color-admin-warning: oklch(80% 0.12 75);
+  --color-admin-warning-soft: oklch(29% 0.029 75);
+  --color-admin-danger: oklch(76% 0.131 26);
+  --color-admin-danger-soft: oklch(28% 0.035 26);
+  --color-admin-scrim: oklch(10% 0.012 260 / 65%);
+  --color-admin-shadow: oklch(5% 0 0 / 25%);
+}
+
+/* Shared reading surfaces follow the public site's existing Tailwind palette. */
+:root {
+  --color-content-surface: var(--color-white);
+  --color-content-subtle: var(--color-gray-50);
+  --color-content-heading: var(--color-gray-900);
+  --color-content-ink: var(--color-gray-700);
+  --color-content-muted: var(--color-gray-500);
+  --color-content-line: var(--color-gray-200);
+  --color-content-accent: var(--color-green-700);
+  --color-content-accent-hover: var(--color-green-800);
+  --color-content-accent-soft: var(--color-green-50);
+  --color-content-on-accent: var(--color-white);
+  --color-dialog-scrim: oklch(13% 0.028 260 / 55%);
+  --color-dialog-shadow: oklch(13% 0.028 260 / 18%);
+  --font-content-ui: var(--font-primary);
+  --font-content-code: var(--font-mono);
+  --space-dialog-xs: 4px;
+  --space-dialog-sm: 8px;
+  --space-dialog-md: 12px;
+  --space-dialog-lg: 16px;
+  --space-dialog-xl: 24px;
+  --text-content-base: 0.9375rem;
+  --text-content-small: 0.8125rem;
+  --text-content-heading: 1.5rem;
+  --text-dialog-title: 1.125rem;
+  --radius-content: 8px;
+  --radius-dialog: 16px;
+  --rule-content: 1px;
+  --dur-dialog-enter: 160ms;
+  --ease-dialog-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark {
+  --color-content-surface: var(--color-gray-900);
+  --color-content-subtle: var(--color-gray-800);
+  --color-content-heading: var(--color-gray-50);
+  --color-content-ink: var(--color-gray-300);
+  --color-content-muted: var(--color-gray-400);
+  --color-content-line: var(--color-gray-700);
+  --color-content-accent: var(--color-green-400);
+  --color-content-accent-hover: var(--color-green-300);
+  --color-content-accent-soft: var(--color-green-950);
+  --color-content-on-accent: var(--color-gray-950);
+  --color-dialog-scrim: oklch(5% 0.018 260 / 72%);
+  --color-dialog-shadow: oklch(5% 0.018 260 / 35%);
+}

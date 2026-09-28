@@ -1,0 +1,198 @@
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R5 V4 */
+/* Hallmark · component: announcement dialog · genre: modern-minimal · theme: existing public green */
+.dialog {
+  width: min(40rem, calc(100% - 2 * var(--space-dialog-lg)));
+  max-width: none;
+  max-height: calc(100vh - 2 * var(--space-dialog-lg));
+  max-height: min(52rem, calc(100dvh - 2 * var(--space-dialog-lg)));
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  border: var(--rule-content) solid var(--color-content-line);
+  border-radius: var(--radius-dialog);
+  background: var(--color-content-surface);
+  color: var(--color-content-ink);
+  box-shadow: 0 24px 80px var(--color-dialog-shadow);
+  font-family: var(--font-content-ui);
+  color-scheme: light;
+}
+
+:global(.dark) .dialog {
+  color-scheme: dark;
+}
+
+.dialog[open] {
+  display: flex;
+  flex-direction: column;
+  animation: appear var(--dur-dialog-enter) var(--ease-dialog-out);
+}
+
+.dialog::backdrop {
+  background: var(--color-dialog-scrim);
+}
+
+.header {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: var(--space-dialog-md);
+  border-bottom: var(--rule-content) solid var(--color-content-line);
+  padding: var(--space-dialog-lg) var(--space-dialog-xl);
+}
+
+.icon {
+  display: grid;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border-radius: var(--radius-content);
+  background: var(--color-content-accent-soft);
+  color: var(--color-content-accent);
+}
+
+.heading {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.heading h2 {
+  margin: 0;
+  color: var(--color-content-heading);
+  font-size: var(--text-dialog-title);
+  font-style: normal;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+/* This static heading receives initial reading focus; buttons keep their rings. */
+.heading h2:focus {
+  outline: none;
+}
+
+.heading p {
+  margin: var(--space-dialog-xs) 0 0;
+  color: var(--color-content-muted);
+  font-size: var(--text-content-small);
+  line-height: 1.5;
+}
+
+.close {
+  display: grid;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 0;
+  border-radius: var(--radius-content);
+  background: none;
+  color: var(--color-content-muted);
+  cursor: pointer;
+}
+
+.body {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-content-muted) var(--color-content-surface);
+  padding: var(--space-dialog-xl);
+}
+
+.body:focus-visible {
+  outline: 2px solid var(--color-content-accent);
+  outline-offset: -3px;
+}
+
+.footer {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-dialog-lg);
+  border-top: var(--rule-content) solid var(--color-content-line);
+  padding: var(--space-dialog-lg) var(--space-dialog-xl);
+}
+
+.footer p {
+  margin: 0;
+  color: var(--color-content-muted);
+  font-size: var(--text-content-small);
+  line-height: 1.6;
+}
+
+.confirm {
+  flex-shrink: 0;
+  min-height: 44px;
+  border: 0;
+  border-radius: var(--radius-content);
+  background: var(--color-content-accent);
+  padding: var(--space-dialog-sm) var(--space-dialog-xl);
+  color: var(--color-content-on-accent);
+  font-size: var(--text-content-base);
+  font-weight: 600;
+  line-height: 1.5;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.dialog button:focus-visible {
+  outline: 2px solid var(--color-content-accent);
+  outline-offset: 3px;
+}
+
+.dialog button:active:not(:disabled) {
+  opacity: 0.8;
+}
+
+.dialog button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (hover: hover) {
+  .close:hover {
+    background: var(--color-content-subtle);
+    color: var(--color-content-heading);
+  }
+
+  .confirm:hover:not(:disabled) {
+    background: var(--color-content-accent-hover);
+  }
+}
+
+@media (max-width: 479px) {
+  .header,
+  .body,
+  .footer {
+    padding-inline: var(--space-dialog-lg);
+  }
+
+  .footer {
+    flex-direction: column;
+    gap: var(--space-dialog-md);
+  }
+
+  .confirm {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dialog[open] {
+    animation: none;
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

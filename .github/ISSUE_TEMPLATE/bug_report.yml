@@ -1,0 +1,43 @@
+name: 问题反馈
+description: 报告部署或使用中遇到的问题。
+body:
+  - type: markdown
+    attributes:
+      value: |
+        提交前请先搜索已有 Issue。涉及认证绕过、密钥泄露等安全漏洞，请按仓库 SECURITY.md 的说明报告。
+        日志、截图和链接请去掉密码、Cookie、订阅令牌与个人信息。
+  - type: input
+    id: version
+    attributes:
+      label: 版本
+      description: 填写版本号、镜像标签或提交号。
+      placeholder: 例如 6.6.6+1，或 ghcr.io/bytedo/miaotv:6.6.6-1
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: 运行环境
+      description: 部署方式、存储后端、浏览器或客户端版本。无需粘贴完整环境变量。
+      placeholder: Docker Compose / Redis / Chrome 版本 / 操作系统
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: 复现步骤
+      description: 从打开页面开始，写到问题出现为止。
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: 预期结果与实际结果
+      description: 原本希望发生什么，实际看到了什么？
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 日志或截图
+      description: 提供相关的脱敏错误片段或截图。第三方源出错时，说明发生在搜索、详情、封面还是播放阶段。

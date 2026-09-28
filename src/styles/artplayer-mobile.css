@@ -1,0 +1,270 @@
+/* ============================================
+   ArtPlayer Mobile Optimizations
+   移动端适配样式 - 模块化重构版
+   ⚠️ 重要：这些规则使用 !important 覆盖 ArtPlayer 内联样式
+   ============================================ */
+
+/* ===== Medium Screen (Tablets & Mobile Landscape) ===== */
+@media (max-width: 768px) {
+  /* 网页全屏在移动端意义不大，隐藏以节省空间 */
+  .art-control-fullscreenWeb {
+    display: none !important;
+  }
+
+  /* 音量控制在移动端有物理按键，隐藏以节省空间 */
+  .art-control-volume {
+    display: none !important;
+  }
+}
+
+/* ===== Small Screen (Mobile Portrait) ===== */
+@media (max-width: 380px) {
+  /* 减小控制按钮的间距和尺寸，确保完整显示 */
+  .art-controls button,
+  .art-control {
+    min-width: 28px !important;
+    padding: 0 4px !important;
+    font-size: 13px !important;
+  }
+
+  /* 减小控制栏的内边距 */
+  .art-controls {
+    padding: 0 4px !important;
+  }
+
+  /* 确保全屏按钮始终可见 */
+  .art-control-fullscreen {
+    display: flex !important;
+    min-width: 32px !important;
+  }
+
+  /* 调整播放器时间显示更紧凑 */
+  .art-control-time {
+    font-size: 11px !important;
+    padding: 0 2px !important;
+  }
+
+  /* 减小进度条高度以节省空间 */
+  .art-progress {
+    height: 3px !important;
+  }
+}
+
+/* 播放页使用独立标记，保留直播页现有控制栏布局。 */
+@media (max-width: 1023px) {
+  .art-video-player.miaotv-play-player {
+    --art-control-height: 44px !important;
+    --art-control-icon-size: 24px;
+    --art-padding: 8px;
+    --art-bottom-gap: 0px;
+    --art-progress-height: 6px;
+    --art-indicator-size: 18px;
+    --art-indicator-scale: 1;
+  }
+
+  .art-video-player.miaotv-play-player .art-bottom,
+  .art-video-player.miaotv-play-player.art-fullscreen .art-bottom,
+  .art-video-player.miaotv-play-player.art-fullscreen-web .art-bottom {
+    padding-right: max(8px, env(safe-area-inset-right)) !important;
+    padding-bottom: max(8px, env(safe-area-inset-bottom)) !important;
+    padding-left: max(8px, env(safe-area-inset-left)) !important;
+  }
+
+  .art-video-player.miaotv-play-player .art-bottom .art-liquid-glass {
+    box-sizing: border-box;
+    max-width: 100%;
+    padding: 0 4px !important;
+  }
+
+  .art-video-player.miaotv-play-player .art-controls {
+    min-width: 0;
+    padding: 0 !important;
+  }
+
+  .art-video-player.miaotv-play-player .art-controls-left {
+    flex: 1 1 auto;
+    min-width: 0;
+    margin-left: 0 !important;
+  }
+
+  .art-video-player.miaotv-play-player .art-controls-right {
+    flex: 0 0 auto;
+    margin-right: 0 !important;
+  }
+
+  .art-video-player.miaotv-play-player .art-controls .art-control {
+    flex-shrink: 0 !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    padding: 0 6px !important;
+    touch-action: manipulation;
+  }
+
+  .art-video-player.miaotv-play-player .art-controls .art-control-time {
+    flex-shrink: 1 !important;
+    min-width: 0 !important;
+    overflow: hidden;
+    padding: 0 3px !important;
+    font-size: 11px !important;
+    font-variant-numeric: tabular-nums;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .art-video-player.miaotv-play-player .art-control-volume,
+  .art-video-player.miaotv-play-player .art-control-fullscreenWeb {
+    display: none !important;
+  }
+
+  .art-video-player.miaotv-play-player .art-control-progress {
+    display: flex;
+    height: 44px !important;
+    align-items: center;
+    padding: 0 !important;
+    touch-action: none;
+  }
+
+  .art-video-player.miaotv-play-player .art-progress {
+    flex: 0 0 auto;
+    height: auto !important;
+    min-height: 44px;
+    padding-top: 0;
+  }
+
+  .art-video-player.miaotv-play-player .art-control-progress-inner {
+    height: 6px !important;
+  }
+
+  .art-video-player.miaotv-play-player .art-settings {
+    right: max(8px, env(safe-area-inset-right)) !important;
+    max-width: calc(
+      100% - max(8px, env(safe-area-inset-left)) -
+        max(8px, env(safe-area-inset-right))
+    );
+    max-height: calc(100% - 76px) !important;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .art-video-player.miaotv-play-player .art-setting-item {
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+}
+
+@media (max-width: 480px) {
+  .art-video-player.miaotv-play-player .art-control-pip,
+  .art-video-player.miaotv-play-player .art-control-screenshot {
+    display: none !important;
+  }
+
+  .art-video-player.miaotv-play-player .art-control-audio-track-control > span {
+    display: none;
+  }
+}
+
+/* 浮动与控制栏快进按钮共用实例，由断点切换，旋转时无需重建。 */
+.art-video-player.artplayer-plugin-seek-buttons .art-seek-floating-left,
+.art-video-player.artplayer-plugin-seek-buttons .art-seek-floating-right {
+  position: absolute;
+  top: max(
+    22px,
+    calc(
+      (
+          100% - var(--art-control-height) - 44px -
+            max(8px, env(safe-area-inset-bottom))
+        ) /
+        2
+    )
+  );
+  z-index: 70;
+  display: none;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 8px;
+  border: 1px solid var(--art-progress-color);
+  border-radius: 50%;
+  background: var(--art-hover-color);
+  color: var(--art-font-color);
+  cursor: pointer;
+  transform: translateY(-50%);
+  touch-action: manipulation;
+  transition: opacity 0.2s ease;
+}
+
+.art-video-player.artplayer-plugin-seek-buttons .art-seek-floating-left {
+  left: max(12px, env(safe-area-inset-left));
+  right: auto;
+}
+
+.art-video-player.artplayer-plugin-seek-buttons .art-seek-floating-right {
+  right: max(12px, env(safe-area-inset-right));
+  left: auto;
+}
+
+.art-video-player.artplayer-plugin-seek-buttons[data-seek-layout='left']
+  .art-seek-floating-right {
+  left: calc(max(12px, env(safe-area-inset-left)) + 52px);
+  right: auto;
+}
+
+.art-video-player.artplayer-plugin-seek-buttons[data-seek-layout='right']
+  .art-seek-floating-left {
+  right: calc(max(12px, env(safe-area-inset-right)) + 52px);
+  left: auto;
+}
+
+.art-video-player.artplayer-plugin-seek-buttons
+  :is(.art-seek-floating-left, .art-seek-floating-right):focus-visible {
+  outline: 2px solid var(--art-font-color);
+  outline-offset: 2px;
+}
+
+.art-video-player.artplayer-plugin-seek-buttons
+  :is(.art-seek-floating-left, .art-seek-floating-right):active {
+  opacity: 0.75;
+}
+
+@media (max-width: 767px) {
+  .art-video-player.artplayer-plugin-seek-buttons .art-control-seek-backward,
+  .art-video-player.artplayer-plugin-seek-buttons .art-control-seek-forward,
+  .art-video-player.miaotv-play-player .art-control-audio-track-control {
+    display: none !important;
+  }
+
+  .art-video-player.artplayer-plugin-seek-buttons
+    .art-seek-floating-left:not([hidden]),
+  .art-video-player.artplayer-plugin-seek-buttons
+    .art-seek-floating-right:not([hidden]) {
+    display: flex;
+  }
+
+  /* 时间复用进度条触区上方的留白，不再挤占按钮行。 */
+  .art-video-player.miaotv-play-player .art-controls .art-control-time {
+    position: absolute;
+    top: -44px;
+    left: 0;
+    right: auto;
+    width: auto;
+    height: 16px !important;
+    min-height: 0 !important;
+    max-width: 100%;
+    justify-content: flex-start;
+    padding: 0 !important;
+    line-height: 16px;
+    opacity: 1;
+    pointer-events: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .art-video-player.artplayer-plugin-seek-buttons .art-seek-floating-left,
+  .art-video-player.artplayer-plugin-seek-buttons .art-seek-floating-right {
+    transition: none;
+  }
+}

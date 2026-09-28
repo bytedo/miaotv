@@ -1,0 +1,269 @@
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R5 V4 */
+/* Hallmark · component: user action drawer · genre: modern-minimal · theme: existing admin
+ * states: default · hover · focus · active · disabled · loading · error · success
+ * Component-scope: skipping macrostructure. Reuses tokens.css; contrast: pass (40–41).
+ */
+
+.admin-user-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 49;
+  display: flex;
+  justify-content: flex-end;
+  isolation: isolate;
+  color: var(--color-admin-ink);
+  font-family: var(--font-admin-ui);
+  font-size: var(--text-admin-base);
+  line-height: 1.6;
+}
+
+.admin-user-drawer-overlay::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--color-admin-scrim);
+  opacity: 0.7;
+  content: '';
+  pointer-events: none;
+}
+
+.admin-user-drawer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(100%, 480px);
+  min-width: 0;
+  height: 100dvh;
+  max-height: 100dvh;
+  background: var(--color-admin-surface);
+  color: var(--color-admin-ink);
+  border-left: var(--rule-admin) solid var(--color-admin-line);
+  box-shadow: -12px 0 32px var(--color-admin-shadow);
+  animation: admin-user-drawer-enter 180ms var(--ease-admin-out);
+  overflow-wrap: anywhere;
+}
+
+.admin-user-drawer,
+.admin-user-drawer * {
+  box-sizing: border-box;
+}
+
+.admin-user-drawer:focus-visible {
+  outline: 2px solid var(--color-admin-primary);
+  outline-offset: -2px;
+}
+
+.admin-user-drawer
+  :is(button, a, input, select, textarea, summary):focus-visible,
+.admin-user-drawer .is-focus {
+  outline: 2px solid var(--color-admin-primary);
+  outline-offset: 3px;
+}
+
+.admin-user-drawer :is(button, a) {
+  white-space: nowrap;
+}
+
+.admin-user-drawer button:not(:disabled) {
+  cursor: pointer;
+}
+
+.admin-user-drawer button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.admin-user-drawer-topbar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-admin-md);
+  flex-shrink: 0;
+  min-height: 76px;
+  padding: var(--space-admin-lg) var(--space-admin-xl);
+  border-bottom: var(--rule-admin) solid var(--color-admin-line);
+}
+
+.admin-user-drawer-heading {
+  flex: 1;
+  min-width: 0;
+}
+
+.admin-user-drawer-title {
+  margin: 0;
+  color: var(--color-admin-ink);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 650;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.admin-user-drawer-description {
+  margin: var(--space-admin-xs) 0 0;
+  color: var(--color-admin-muted);
+  font-size: var(--text-admin-xs);
+  line-height: 1.5;
+}
+
+.admin-user-drawer-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-admin-sm);
+  background: var(--color-admin-surface);
+  color: var(--color-admin-muted);
+  line-height: 1;
+  transition: transform var(--dur-admin-fast) var(--ease-admin-out);
+}
+
+.admin-user-drawer-close.is-hover {
+  background: var(--color-admin-hover);
+  color: var(--color-admin-ink);
+}
+
+@media (hover: hover) {
+  .admin-user-drawer-close:hover:not(:disabled) {
+    background: var(--color-admin-hover);
+    color: var(--color-admin-ink);
+  }
+}
+
+.admin-user-drawer-close:active:not(:disabled),
+.admin-user-drawer-close.is-active {
+  transform: translateY(1px);
+  background: var(--color-admin-hover);
+  color: var(--color-admin-ink);
+}
+
+.admin-user-drawer-close:disabled {
+  background: var(--color-admin-subtle);
+  color: var(--color-admin-muted);
+  cursor: not-allowed;
+}
+
+.admin-user-drawer-header {
+  flex-shrink: 0;
+  min-width: 0;
+  padding: var(--space-admin-xl);
+  border-bottom: var(--rule-admin) solid var(--color-admin-line);
+  background: var(--color-admin-subtle);
+  color: var(--color-admin-ink);
+}
+
+.admin-user-drawer-body {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  padding: var(--space-admin-xl);
+  overflow-y: auto;
+  overflow-x: clip;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+
+.admin-user-drawer-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  gap: var(--space-admin-sm);
+  padding: var(--space-admin-lg) var(--space-admin-xl);
+  padding-bottom: max(var(--space-admin-lg), env(safe-area-inset-bottom));
+  border-top: var(--rule-admin) solid var(--color-admin-line);
+  background: var(--color-admin-surface);
+  color: var(--color-admin-ink);
+}
+
+.admin-user-drawer-notice {
+  display: flex;
+  align-items: flex-start;
+  flex-shrink: 0;
+  gap: var(--space-admin-sm);
+  margin: var(--space-admin-lg) var(--space-admin-xl) 0;
+  padding: var(--space-admin-md);
+  border-radius: var(--radius-admin-sm);
+  color: var(--color-admin-muted);
+  background: var(--color-admin-subtle);
+  font-size: var(--text-admin-sm);
+}
+
+.admin-user-drawer-notice svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.admin-user-drawer-notice[data-state='loading'] svg {
+  animation: admin-user-drawer-loading 1s linear infinite;
+}
+
+.admin-user-drawer-notice[data-state='error'] {
+  color: var(--color-admin-danger);
+  background: var(--color-admin-danger-soft);
+}
+
+.admin-user-drawer-notice[data-state='success'] {
+  color: var(--color-admin-success);
+  background: var(--color-admin-success-soft);
+}
+
+@keyframes admin-user-drawer-enter {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes admin-user-drawer-loading {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 520px) {
+  .admin-user-drawer {
+    width: 100%;
+    border-left: 0;
+  }
+
+  .admin-user-drawer-topbar,
+  .admin-user-drawer-header,
+  .admin-user-drawer-body,
+  .admin-user-drawer-footer {
+    padding-left: var(--space-admin-lg);
+    padding-right: var(--space-admin-lg);
+  }
+
+  .admin-user-drawer-notice {
+    margin-left: var(--space-admin-lg);
+    margin-right: var(--space-admin-lg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-user-drawer {
+    animation: none;
+  }
+
+  .admin-user-drawer-close {
+    transition: none;
+  }
+
+  .admin-user-drawer-close:active:not(:disabled),
+  .admin-user-drawer-close.is-active {
+    transform: none;
+  }
+
+  .admin-user-drawer-notice[data-state='loading'] svg {
+    animation: none;
+  }
+}

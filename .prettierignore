@@ -1,0 +1,53 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+pnpm-lock.yaml
+
+# test output and local Python environments
+/coverage
+/test-results/
+/playwright-report/
+/.venv/
+/.venv-*/
+/venv/
+__pycache__/
+*.pyc
+
+# builds and deployment output
+/.next/
+/out/
+/build
+/.edgeone/
+/.vercel/
+
+# misc
+.DS_Store
+*.pem
+*.backup
+*.bak
+*.edgeone-backup
+
+# logs and test reports
+*.log
+*.log.*
+*_log.txt
+*.tap
+
+# local environment and storage
+.env
+.env.*
+!.env.example
+/data/
+/video-cache/
+/logs/
+crash-reports.jsonl
+/.hallmark/
+
+# generated files
+next-env.d.ts
+*.tsbuildinfo
+src/lib/runtime.ts
+public/manifest.json
+public/workbox-*.js
+public/workbox-*.js.map

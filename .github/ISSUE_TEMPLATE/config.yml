@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 安全漏洞报告
+    url: https://github.com/bytedo/miaotv/blob/main/SECURITY.md
+    about: 认证绕过、密钥泄露等问题请先阅读报告方式。

@@ -1,0 +1,65 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+/test-results/
+/playwright-report/
+/.venv/
+/.venv-*/
+/venv/
+__pycache__/
+*.pyc
+
+# builds and deployment output
+/.next/
+/out/
+/build
+/.edgeone/
+/.vercel/
+
+# misc
+.DS_Store
+*.pem
+*.backup
+*.bak
+*.edgeone-backup
+
+# logs and test reports
+*.log
+*.log.*
+*_log.txt
+*.tap
+
+# Only the example environment belongs in Git.
+.env
+.env.*
+!.env.example
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# generated files
+sitemap.xml
+sitemap-*.xml
+src/lib/runtime.ts
+public/manifest.json
+public/workbox-*.js
+public/workbox-*.js.map
+# public/sw.js is maintained source for streaming downloads.
+
+# local dev files
+/.hallmark/
+AGENT.md
+TVBOX_DEV.md
+docker-compose.yml
+package-lock.json
+
+# local storage and runtime logs
+/data/
+/video-cache/
+/logs/
+crash-reports.jsonl

@@ -1,0 +1,201 @@
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R5 V4 */
+/* Hallmark · component: Markdown content · theme: existing public site */
+.content {
+  min-width: 0;
+  color: var(--color-content-ink);
+  font-family: var(--font-content-ui);
+  font-size: var(--text-content-base);
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+
+.content > :first-child {
+  margin-top: 0;
+}
+
+.content > :last-child {
+  margin-bottom: 0;
+}
+
+.content :is(p, ul, ol, blockquote, pre, hr, .tableViewport) {
+  margin-block: var(--space-dialog-lg);
+}
+
+.content :is(h1, h2, h3, h4, h5, h6) {
+  margin-block: var(--space-dialog-xl) var(--space-dialog-md);
+  color: var(--color-content-heading);
+  font-weight: 650;
+  font-style: normal;
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+
+.content :is(h1, h2, h3, h4, h5, h6) em {
+  font-style: normal;
+}
+
+.content h1 {
+  font-size: var(--text-content-heading);
+}
+
+.content h2 {
+  font-size: var(--text-dialog-title);
+}
+
+.content :is(h3, h4, h5, h6) {
+  font-size: 1em;
+}
+
+.content strong {
+  color: var(--color-content-heading);
+  font-weight: 650;
+}
+
+.content a {
+  color: var(--color-content-accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+@media (hover: hover) {
+  .content a:hover {
+    color: var(--color-content-accent-hover);
+  }
+}
+
+.content a:active {
+  color: var(--color-content-accent-hover);
+}
+
+.content :is(a, pre, .tableViewport):focus-visible {
+  outline: 2px solid var(--color-content-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-content);
+}
+
+.content ul,
+.content ol {
+  padding-inline-start: var(--space-dialog-xl);
+}
+
+.content ul {
+  list-style-type: disc;
+}
+
+.content ol {
+  list-style-type: decimal;
+}
+
+.content li {
+  padding-inline-start: var(--space-dialog-xs);
+  margin-block: var(--space-dialog-xs);
+}
+
+.content li::marker {
+  color: var(--color-content-muted);
+}
+
+.content li > :is(ul, ol, p) {
+  margin-block: var(--space-dialog-sm);
+}
+
+.content :global(.contains-task-list) {
+  list-style: none;
+  padding-inline-start: 0;
+}
+
+.content input[type='checkbox'] {
+  width: 1em;
+  height: 1em;
+  margin-inline-end: var(--space-dialog-sm);
+  accent-color: var(--color-content-accent);
+  vertical-align: middle;
+}
+
+.content blockquote {
+  border-inline-start: 3px solid var(--color-content-accent);
+  border-radius: 0 var(--radius-content) var(--radius-content) 0;
+  background: var(--color-content-accent-soft);
+  padding: var(--space-dialog-md) var(--space-dialog-lg);
+}
+
+.content blockquote > :first-child {
+  margin-top: 0;
+}
+
+.content blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+.content code {
+  border-radius: var(--space-dialog-xs);
+  background: var(--color-content-subtle);
+  padding: 0.15em 0.4em;
+  color: var(--color-content-heading);
+  font-family: var(--font-content-code);
+  font-size: 0.875em;
+}
+
+.content pre {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  border: var(--rule-content) solid var(--color-content-line);
+  border-radius: var(--radius-content);
+  background: var(--color-content-subtle);
+  padding: var(--space-dialog-lg);
+  line-height: 1.65;
+}
+
+.content pre code {
+  border-radius: 0;
+  background: none;
+  padding: 0;
+  overflow-wrap: normal;
+}
+
+.tableViewport {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  border: var(--rule-content) solid var(--color-content-line);
+  border-radius: var(--radius-content);
+}
+
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-content-small);
+}
+
+.content :is(th, td) {
+  min-width: 7rem;
+  border-bottom: var(--rule-content) solid var(--color-content-line);
+  padding: var(--space-dialog-sm) var(--space-dialog-md);
+  text-align: start;
+  vertical-align: top;
+}
+
+.content th {
+  background: var(--color-content-subtle);
+  color: var(--color-content-heading);
+  font-weight: 600;
+}
+
+.content tr:last-child td {
+  border-bottom: 0;
+}
+
+.content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-block: var(--space-dialog-lg);
+  border-radius: var(--radius-content);
+}
+
+.content hr {
+  border: 0;
+  border-top: var(--rule-content) solid var(--color-content-line);
+}

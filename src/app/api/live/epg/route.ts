@@ -1,0 +1,58 @@
+import { NextRequest, NextResponse } from 'next/server';
+
+import { getCachedLiveChannels } from '@/lib/live';
+import { getMediaProxyPolicy } from '@/lib/proxy-source';
+
+export const runtime = 'nodejs';
+
+export async function GET(request: NextRequest) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const sourceKey = searchParams.get('source');
+    const tvgId = searchParams.get('tvgId');
+
+    if (!sourceKey) {
+      return NextResponse.json({ error: '缺少直播源参数' }, { status: 400 });
+    }
+
+    if (!tvgId) {
+      return NextResponse.json(
+        { error: '缺少频道tvg-id参数' },
+        { status: 400 },
+      );
+    }
+
+    const policy = await getMediaProxyPolicy(request, sourceKey, true);
+    const channelData = await getCachedLiveChannels(sourceKey, policy);
+
+    if (!channelData) {
+      // 频道信息未找到时返回空的节目单数据
+      return NextResponse.json({
+        success: true,
+        data: {
+          tvgId,
+          source: sourceKey,
+          epgUrl: '',
+          programs: [],
+        },
+      });
+    }
+
+    // 从epgs字段中获取对应tvgId的节目单信息
+    const epgData = channelData.epgs[tvgId] || [];
+    const logoUrl = channelData.epgLogos?.[tvgId] || '';
+
+    return NextResponse.json({
+      success: true,
+      data: {
+        tvgId,
+        source: sourceKey,
+        epgUrl: channelData.epgUrl,
+        logo: logoUrl,
+        programs: epgData,
+      },
+    });
+  } catch (error) {
+    return NextResponse.json({ error: '获取节目单信息失败' }, { status: (error as { status?: number }).status || 500 });
+  }
+}

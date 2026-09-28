@@ -1,0 +1,22 @@
+name: 功能建议
+description: 说明你遇到的需求和希望如何解决。
+body:
+  - type: textarea
+    id: scenario
+    attributes:
+      label: 使用场景
+      description: 你在什么情况下遇到了什么问题？现有功能哪里不够用？
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 希望怎样改
+      description: 描述你希望看到的操作或行为；有具体例子可以一起提供。
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: 已尝试的办法
+      description: 如果有替代做法、相关 Issue 或参考项目，可以写在这里。
